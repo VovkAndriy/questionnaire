@@ -1,0 +1,24 @@
+<div class="question-wrapper">
+  <div class="question">
+    <div class="question__info">
+      <span class="question__type">{{ question?.type }}</span>
+      <p class="question__content">
+        {{ question?.question }}
+      </p>
+    </div>
+
+    <div class="question__buttons">
+      <button class="button edit" [routerLink]="['edit', question?.id]">
+        edit
+      </button>
+      <button class="button delete" (click)="deleteQuestion()">delete</button>
+    </div>
+    <div class="question__date">
+      <span class="question__edited"
+        >{{ question?.isEdited ? "edited. " : "" }}
+      </span>
+      {{ question?.date | date }}
+    </div>
+  </div>
+  <div class="divider"></div>
+</div>

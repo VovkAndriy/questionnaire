@@ -1,0 +1,65 @@
+<div class="question-wrapper">
+  <h2 class="question-text">{{ question?.question }}</h2>
+
+  <p class="answer-condition" *ngIf="question?.isAnswered">
+    <span
+      class="answer-condition__correct"
+      *ngIf="question?.rightAnswer === question?.answer; else wrong"
+      >Correct!</span
+    >
+
+    <ng-template #wrong>
+      <span class="answer-condition__wrong">
+        Wrong answer! Correct is "<span class="answer-condition__data">{{
+          question?.rightAnswer
+        }}</span
+        >"
+      </span>
+    </ng-template>
+  </p>
+
+  <div class="question-options">
+    <div
+      class="question__option option"
+      *ngFor="let option of question?.answerOptions"
+    >
+      <label
+        class="question__option-item option-item"
+        [ngClass]="{ answered: question?.isAnswered }"
+        ><input
+          class="question__option-input option-input"
+          name="question"
+          [type]="inputType"
+          [disabled]="question?.isAnswered"
+          [checked]="question?.answer === option"
+          (change)="selectOption(inputEl, option)"
+          #inputEl
+        />{{ option }}</label
+      >
+    </div>
+  </div>
+
+  <div class="question-actions">
+    <input
+      class="answer-input"
+      (input)="inputAnswer($event)"
+      [value]="answer || question?.answer || ''"
+      [readonly]="isReadOnly || question?.isAnswered"
+    />
+
+    <button
+      (click)="answerQuestion()"
+      [disabled]="!answer"
+      class="button"
+      *ngIf="!question?.isAnswered; else rollBack"
+    >
+      Answer
+    </button>
+
+    <ng-template #rollBack
+      ><button (click)="removeFromAnsweredList()" class="button">
+        Try Again
+      </button></ng-template
+    >
+  </div>
+</div>

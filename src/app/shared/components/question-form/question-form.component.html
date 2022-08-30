@@ -1,0 +1,72 @@
+<div class="form-wrapper">
+  <form [formGroup]="questionForm" class="form">
+    <div class="form__item">
+      <label class="form__label label">Question *</label>
+      <input class="form__input input" formControlName="question" />
+    </div>
+
+    <div class="form__item question-type">
+      <div class="type-wrapper">
+        <label class="form__label label">Question Type *</label>
+        <div class="input select" (click)="isSelectOpen = !isSelectOpen">
+          <span>{{ questionForm.get("type")?.value }}</span>
+          <img
+            class="select__arrow"
+            [ngClass]="{ open: isSelectOpen }"
+            src="/assets/icons/select-arrow.svg"
+          />
+          <div class="select__list" *ngIf="isSelectOpen">
+            <p
+              class="select__item"
+              (click)="selectType(type)"
+              *ngFor="let type of questionTypesList"
+            >
+              {{ type }}
+            </p>
+          </div>
+          <div class="select__overlay" *ngIf="isSelectOpen"></div>
+        </div>
+      </div>
+
+      <div
+        class="form__chipset_box"
+        (click)="chipsetInput.focus()"
+        [ngClass]="{ none: !isTypeQuestionOpen }"
+      >
+        <label class="label">Answer Options *</label>
+        <div class="form__chipset_input input">
+          <span class="option-chipset" *ngFor="let option of options"
+            >{{ option }}
+            <img
+              class="remove-chipset"
+              (click)="removeOption(option)"
+              src="/assets/icons/cross.svg"
+            />
+          </span>
+
+          <input
+            (keydown)="addChipset($event)"
+            (input)="inputOptions(chipsetInput.value)"
+            class="form__input chipset-input"
+            #chipsetInput
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="form__item">
+      <label class="form__label label">Right Answer *</label>
+      <input class="form__input input" formControlName="rightAnswer" />
+    </div>
+  </form>
+
+  <button
+    class="button"
+    (click)="submitForm()"
+    [disabled]="
+      questionForm.invalid || (!(options.length > 1) && isTypeQuestionOpen)
+    "
+  >
+    {{ saveButtonType }}
+  </button>
+</div>

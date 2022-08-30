@@ -1,0 +1,23 @@
+<div class="questions-list-page-wrapper">
+  <app-nav-menu></app-nav-menu>
+
+  <div class="questions-list-wrapper">
+    <div class="unanswered-questions-list list-item">
+      <h2 class="list-title">Questions</h2>
+
+      <app-unanswered-question-list
+        [questionList]="unAnsweredQuestionsList"
+        class="questions-list"
+      ></app-unanswered-question-list>
+    </div>
+
+    <div class="answered-questions-list list-item">
+      <h2 class="list-title">Answered Questions</h2>
+
+      <app-answered-questions-list
+        [questionList]="answeredQuestionsList"
+        class="questions-list"
+      ></app-answered-questions-list>
+    </div>
+  </div>
+</div>

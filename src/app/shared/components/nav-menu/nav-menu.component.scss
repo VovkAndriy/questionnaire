@@ -1,0 +1,28 @@
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 20px;
+  background-color: #212832;
+}
+
+.nav-item {
+  font-size: 20px;
+  font-weight: 700;
+  color: #9da8b8;
+  cursor: pointer;
+
+  &.active {
+    color: #30cc9f;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-item {
+    font-size: 30px;
+  }
+
+  .nav {
+    flex-direction: column;
+  }
+}

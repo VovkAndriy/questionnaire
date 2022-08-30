@@ -1,0 +1,43 @@
+@import "./src/styles";
+
+.questions-list-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 80px;
+}
+
+.questions {
+  width: 100%;
+}
+
+.questions-list {
+  background-color: #ffffff;
+  padding: 6px;
+  border-radius: 20px;
+}
+
+.questions-title {
+  margin-bottom: 20px;
+}
+
+.no-questions {
+  @include no-questions;
+}
+
+.button {
+  height: 0%;
+  @include button;
+}
+
+@media (max-width: 1024px) {
+  .questions-list-wrapper {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 480px) {
+  .questions-list-wrapper {
+    padding: 40px 10px;
+  }
+}

@@ -1,0 +1,11 @@
+@import "./src/styles";
+
+.unanswered-questions-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.no-questions {
+  @include no-questions;
+}

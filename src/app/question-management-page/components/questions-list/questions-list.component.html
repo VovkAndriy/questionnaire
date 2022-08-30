@@ -1,0 +1,18 @@
+<app-nav-menu></app-nav-menu>
+
+<div class="questions-list-wrapper">
+  <div class="questions">
+    <h1 class="questions-title">Questions List</h1>
+
+    <div class="questions-list" *ngIf="questions$ | async as questions">
+      <app-question
+        *ngFor="let question of questions | sortQuestions"
+        [question]="question"
+      ></app-question>
+
+      <p class="no-questions" *ngIf="!questions.length">No Questions...</p>
+    </div>
+  </div>
+
+  <button class="button" routerLink="create-question">Create Question</button>
+</div>

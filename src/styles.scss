@@ -1,0 +1,102 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+:root {
+  --dark: #212832;
+  --text-color: #c1d1e8;
+  --input-bg: #182c47;
+  --accent-green: #287373;
+  --light-green: #30cc9f;
+  --danger: #f54141;
+  --gray: #687281;
+  --light-gray: #c1c3c5;
+}
+
+*,
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0.1px;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: no-repeat fixed linear-gradient(#fdecc3, #b3cff6);
+  height: 100vh;
+  color: var(--dark);
+}
+
+a {
+  color: var(--blue);
+
+  &:hover {
+    cursor: var(--cursor-hover);
+  }
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 32px;
+  color: var(--dark-color);
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--dark-color);
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--dark-color);
+}
+
+.required {
+  color: #5692e8;
+}
+
+@mixin button {
+  text-transform: capitalize;
+  font-size: 20px;
+  white-space: nowrap;
+  border: none;
+  color: #ffffff;
+  border-radius: 8px;
+  background-color: var(--accent-green);
+  padding: 8px 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #075c5c;
+  }
+
+  &:active {
+    background-color: #004747;
+  }
+
+  &:disabled {
+    cursor: auto;
+    background-color: #e5e5e5;
+  }
+}
+
+@mixin no-questions {
+  line-height: 40px;
+  margin-left: 20px;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--gray);
+}

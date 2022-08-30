@@ -1,0 +1,8 @@
+<div class="unanswered-questions-list-wrapper">
+  <app-questionnaire-card
+    *ngFor="let question of questionList | sortQuestions"
+    [question]="question"
+  ></app-questionnaire-card>
+
+  <p class="no-questions" *ngIf="!questionList.length">No Questions...</p>
+</div>
